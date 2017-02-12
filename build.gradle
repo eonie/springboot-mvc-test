@@ -1,0 +1,35 @@
+
+plugins {
+    //id 'org.springframework.boot' version '1.4.3.RELEASE'
+    id 'org.springframework.boot' version '1.5.1.RELEASE'
+    id 'java'
+    id 'eclipse-wtp'
+    id 'war'
+}
+
+
+sourceCompatibility = 1.7 // 设置 JDK 版本
+targetCompatibility = 1.7   // 设置 JDK 版本
+[compileJava,compileTestJava,javadoc]*.options*.encoding = "UTF-8"
+javadoc {
+    options.charSet = 'UTF-8'
+}
+jar {
+    baseName = 'mvc-test'
+    version =  '0.0.1-SNAPSHOT'
+}
+
+repositories {
+    maven{url 'http://maven.aliyun.com/nexus/content/groups/public/'}
+    jcenter()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile "javax.servlet.jsp:jsp-api:2.2.1-b03"
+}
+bootRun {
+    addResources = true
+}
